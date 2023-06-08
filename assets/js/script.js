@@ -2,15 +2,19 @@
 
 
 let list = [];
+let listUl = document.getElementById('listUl');
 
 function toDo() {
     let inp = document.getElementById('inp');
-    let listUl = document.getElementById('listUl');
     let inpClass = document.getElementsByClassName('form-control')[0];
     if (inp.value.trim() === '') {
         inpClass.classList.add('is-invalid');
         alert('Empty field!');
-    } else {
+    } else if (list.includes(inp.value)==true) {
+        alert('This word is already exist');
+        inp.value = ' ';
+    }
+    else {
         list.push(inp.value);
         inp.value = ' ';
         inpClass.classList.remove('is-invalid');
